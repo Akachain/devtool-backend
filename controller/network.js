@@ -5,6 +5,7 @@ const network = require('../query/network');
 const message = require('../utils/response');
 const path = require('path');
 const axios = require('axios');
+const channelSvc = require('../services/channel-service');
 
 /**
  * create new network
@@ -27,63 +28,30 @@ const create = async (req, res) => {
     // logger.debug('create network result: ', result);
     if (result.code === 0) {
 
-      const headers = {
-        'content-type': 'application/json'
-      };
       // register org 1
-      const regOrg1Result = await axios.post(`${DAPP_URL}registerUser`,
-        { orgname: org1Name },
-        { headers }
-      ).then(res => {
-        logger.debug('register org 1 succeeded: ', res.data);
-        return res;
-      }).catch(err => {
-        logger.error('register org 1 failed: ', err);
-      });
+      const regOrg1Result = await channelSvc.registerUser({ orgname: org1Name });
       // console.log('========== ', regOrg1Result);
       if (regOrg1Result.data.success) {
         // register org 2
-        const regOrg2Result = await axios.post(`${DAPP_URL}registerUser`,
-          { orgname: org2Name },
-          { headers }
-        ).then(res => {
-          logger.debug('register org 2 succeeded: ', res.data);
-          return res;
-        }).catch(err => {
-          logger.error('register org 2 failed: ', err);
-        });
+        const regOrg2Result = await channelSvc.registerUser({ orgname: org2Name });
         if (regOrg2Result.data.success) {
           // create channel
-          const createChannelResult = await axios.post(`${DAPP_URL}channels`,
-            { orgname: org1Name, channelName: channelName, channelConfigPath: `../artifacts/channel-artifacts/${channelName}.tx` },
-            { headers }
-          ).then(res => {
-            logger.debug('create channel succeeded: ', res.data);
-            return res;
-          }).catch(err => {
-            logger.error('create channel failed: ', err);
+          const createChannelResult = await channelSvc.channels({
+            orgname: org1Name,
+            channelName: channelName,
+            channelConfigPath: `../artifacts/channel-artifacts/${channelName}.tx`
           });
           if (createChannelResult.data.success) {
             // join channel org 1
-            const joinChannelOrg1Res = await axios.post(`${DAPP_URL}joinchannel`,
-              { orgname: org1Name, channelName: channelName },
-              { headers }
-            ).then(res => {
-              logger.debug('join channel org 1 succeeded: ', res.data);
-              return res;
-            }).catch(err => {
-              logger.error('join channel org 1 failed: ', err);
+            const joinChannelOrg1Res = await channelSvc.joinchannel({
+              orgname: org1Name,
+              channelName: channelName
             });
             if (joinChannelOrg1Res.data.success) {
               // join channel org 2
-              const joinChannelOrg2Res = await axios.post(`${DAPP_URL}joinchannel`,
-                { orgname: org2Name, channelName: channelName },
-                { headers }
-              ).then(res => {
-                logger.debug('join channel org 2 succeeded: ', res.data);
-                return res;
-              }).catch(err => {
-                logger.error('join channel org 2 failed: ', err);
+              const joinChannelOrg2Res = await channelSvc.joinchannel({
+                orgname: org2Name,
+                channelName: channelName
               });
               resolve(joinChannelOrg2Res);
             } else {

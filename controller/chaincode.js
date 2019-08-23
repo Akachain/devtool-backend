@@ -89,8 +89,6 @@ const query = async (req, res) => {
     orgname: req.body.orgName,
     channelName: req.body.channelName,
     chaincodeId: req.body.chaincodeId,
-    chaincodeVersion: req.body.chaincodeVersion,
-    chaincodeType: req.body.language,
     fcn: req.body.fcn,
     args: req.body.args
   };
