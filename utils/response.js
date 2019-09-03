@@ -10,7 +10,8 @@ const ErrorMap = {
   'E007': { Code: 'E007', Msg: 'Chaincode is initializing... Please wait a while', MsgDetail: '' },
   'E008': { Code: 'E008', Msg: 'Chaincode is upgrading... Please wait a while', MsgDetail: '' },
   'E009': { Code: 'E009', Msg: 'Chaincode is installing... Please wait a while', MsgDetail: '' },
-  'N002': { Code: 'N002', Msg: 'Network is generating... Please wait a while', MsgDetail: '' }
+  'N002': { Code: 'N002', Msg: 'Network is generating... Please wait a while', MsgDetail: '' },
+  'E010': { Code: 'E010', Msg: 'Cannot create more than 1 network', MsgDetail: '' }
 };
 
 const Response = {

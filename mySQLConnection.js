@@ -4,9 +4,9 @@ const fs = require('fs');
 
 const connection = mysql.createPool({
   host: 'localhost',
-  port: '4406',
+  port: '3306',
   user: 'root',
-  password: 'Akachain',
+  password: '1111',
   multipleStatements: true
 });
 const sqlPath = path.resolve(__dirname, './devtoolcommdb.sql');
@@ -18,9 +18,9 @@ connection.query(sql, function (err, results) {
 
 const realConfig = mysql.createPool({
   host: 'localhost',
-  port: '4406',
+  port: '3306',
   user: 'root',
-  password: 'Akachain',
+  password: '1111',
   database: 'devtoolcommdb',
   multipleStatements: true
 });

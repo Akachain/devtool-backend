@@ -17,100 +17,126 @@ const create = async (req, res) => {
     name, org1Name, org2Name, channelName, version
   } = req.body;
   // emit socket msg and return success response
-  res.io.sockets.emit('create_nw', 'creating');
-  res.json(message.successResponse('N002'));
+
 
   // exec sh file to create network
   const createNWResult = await new Promise(async (resolve, reject) => {
-    const scriptDir = path.resolve(__dirname, '../..', 'devtool-community-network');
-    const result = shell.exec(`${scriptDir}/runFabric.sh startSingle ${channelName} ${org1Name} ${org2Name} ${version} ${name} ${scriptDir}`);
-    // logger.debug('create network result: ', result);
-    if (result.code === 0) {
 
-      const headers = {
-        'content-type': 'application/json'
-      };
-      // register org 1
-      const regOrg1Result = await axios.post(`${DAPP_URL}registerUser`,
-        { orgname: org1Name },
-        { headers }
-      ).then(res => {
-        logger.debug('register org 1 succeeded: ', res.data);
-        return res;
-      }).catch(err => {
-        logger.error('register org 1 failed: ', err);
+    const checkNWExisted = await new Promise((rs, rj) => {
+      network.getAll((err, getRes) => {
+        if (err) {
+          rs(false);
+        } else {
+          if (getRes.length != 0) {
+            rs(true);
+          } else {
+            rs(false);
+          }
+        }
       });
-      // console.log('========== ', regOrg1Result);
-      if (regOrg1Result.data.success) {
-        // register org 2
-        const regOrg2Result = await axios.post(`${DAPP_URL}registerUser`,
-          { orgname: org2Name },
+    });
+    console.log('checkNWExisted', checkNWExisted);
+    if (!checkNWExisted) {
+      res.io.sockets.emit('create_nw', 'creating');
+      res.json(message.successResponse('N002'));
+
+      const scriptDir = path.resolve(__dirname, '../..', 'devtool-community-network');
+      const result = shell.exec(`${scriptDir}/runFabric.sh startSingle ${channelName} ${org1Name} ${org2Name} ${version} ${name} ${scriptDir}`);
+      // logger.debug('create network result: ', result);
+      if (result.code === 0) {
+
+        const headers = {
+          'content-type': 'application/json'
+        };
+        // register org 1
+        const regOrg1Result = await axios.post(`${DAPP_URL}registerUser`,
+          { orgname: org1Name },
           { headers }
         ).then(res => {
-          logger.debug('register org 2 succeeded: ', res.data);
+          logger.debug('register org 1 succeeded: ', res.data);
           return res;
         }).catch(err => {
-          logger.error('register org 2 failed: ', err);
+          logger.error('register org 1 failed: ', err);
         });
-        if (regOrg2Result.data.success) {
-          // create channel
-          const createChannelResult = await axios.post(`${DAPP_URL}channels`,
-            { orgname: org1Name, channelName: channelName, channelConfigPath: `../artifacts/channel-artifacts/${channelName}.tx` },
+        // console.log('========== ', regOrg1Result);
+        if (regOrg1Result.data.success) {
+          // register org 2
+          const regOrg2Result = await axios.post(`${DAPP_URL}registerUser`,
+            { orgname: org2Name },
             { headers }
           ).then(res => {
-            logger.debug('create channel succeeded: ', res.data);
+            logger.debug('register org 2 succeeded: ', res.data);
             return res;
           }).catch(err => {
-            logger.error('create channel failed: ', err);
+            logger.error('register org 2 failed: ', err);
           });
-          if (createChannelResult.data.success) {
-            // join channel org 1
-            const joinChannelOrg1Res = await axios.post(`${DAPP_URL}joinchannel`,
-              { orgname: org1Name, channelName: channelName },
+          if (regOrg2Result.data.success) {
+            // create channel
+            const createChannelResult = await axios.post(`${DAPP_URL}channels`,
+              { orgname: org1Name, channelName: channelName, channelConfigPath: `../artifacts/channel-artifacts/${channelName}.tx` },
               { headers }
             ).then(res => {
-              logger.debug('join channel org 1 succeeded: ', res.data);
+              logger.debug('create channel succeeded: ', res.data);
               return res;
             }).catch(err => {
-              logger.error('join channel org 1 failed: ', err);
+              logger.error('create channel failed: ', err);
             });
-            if (joinChannelOrg1Res.data.success) {
-              // join channel org 2
-              const joinChannelOrg2Res = await axios.post(`${DAPP_URL}joinchannel`,
-                { orgname: org2Name, channelName: channelName },
+            if (createChannelResult.data.success) {
+              // join channel org 1
+              const joinChannelOrg1Res = await axios.post(`${DAPP_URL}joinchannel`,
+                { orgname: org1Name, channelName: channelName },
                 { headers }
               ).then(res => {
-                logger.debug('join channel org 2 succeeded: ', res.data);
+                logger.debug('join channel org 1 succeeded: ', res.data);
                 return res;
               }).catch(err => {
-                logger.error('join channel org 2 failed: ', err);
+                logger.error('join channel org 1 failed: ', err);
               });
-              resolve(joinChannelOrg2Res);
+              if (joinChannelOrg1Res.data.success) {
+                // join channel org 2
+                const joinChannelOrg2Res = await axios.post(`${DAPP_URL}joinchannel`,
+                  { orgname: org2Name, channelName: channelName },
+                  { headers }
+                ).then(res => {
+                  logger.debug('join channel org 2 succeeded: ', res.data);
+                  return res;
+                }).catch(err => {
+                  logger.error('join channel org 2 failed: ', err);
+                });
+                resolve(joinChannelOrg2Res);
+              } else {
+                resolve(joinChannelOrg1Res);
+              }
             } else {
-              resolve(joinChannelOrg1Res);
+              resolve(createChannelResult);
             }
           } else {
-            resolve(createChannelResult);
+            resolve(regOrg2Result);
           }
         } else {
-          resolve(regOrg2Result);
+          resolve(regOrg1Result);
         }
+
       } else {
-        resolve(regOrg1Result);
+        logger.debug(`err ${result.code}, stderr ${result.stderr}, stdout ${result.stdout} `);
+        resolve({
+          data: {
+            message: 'create nw failed' + JSON.stringify(error),
+            success: false
+          }
+        });
       }
 
     } else {
-      logger.debug(`err ${result.code}, stderr ${result.stderr}, stdout ${result.stdout} `);
-      resolve({
-        message: 'create nw failed' + JSON.stringify(error),
-        success: false
-      });
+      return res.json(message.errorResponse('E010'));
     }
   }).catch(error => {
     logger.error('create nw failed: ', error);
     resolve({
-      message: 'create nw failed' + JSON.stringify(error),
-      success: false
+      data: {
+        message: 'create nw failed' + JSON.stringify(error),
+        success: false
+      }
     });
   });
   logger.debug('createNWResult: ', createNWResult.data);
