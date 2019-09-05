@@ -97,7 +97,8 @@ router.post('/', (req, res, next) => {
                     args: req.body.args
                   };
                   axios.post(`${DAPP_URL}upgradeChainCode`, upgradeData).then(upgradeResult => {
-                    if (upgradeResult.success) {
+                    console.log('upgrade chaincode response: ', upgradeResult.data);
+                    if (upgradeResult.data.success) {
                       res.io.sockets.emit('upg_cc', 'upgrade_succeeded');
 
                       // parallel thread running to update chaincode status when success

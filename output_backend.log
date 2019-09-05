@@ -1,285 +1,0 @@
-Connecting to database [devtoolcommdb] at 127.0.0.1:4406...
-Server is listening on 0.0.0.0:44080 ...
-[32m[2019-09-04T09:35:52.624] [INFO] network - [39mget all nw ok
-[32m[2019-09-04T09:36:08.686] [INFO] network - [39mget all nw ok
-[32m[2019-09-04T09:36:16.248] [INFO] network - [39mget all nw ok
-checkNWExisted false
-
-    _    _              _           _         _       
-   / \  | | ____ _  ___| |__   __ _(_)_ __   (_) ___  
-  / _ \ | |/ / _` |/ __| '_ \ / _` | | '_ \  | |/ _ \ 
- / ___ \|   < (_| | (__| | | | (_| | | | | |_| | (_) |
-/_/   \_\_|\_\__,_|\___|_| |_|\__,_|_|_| |_(_)_|\___/ 
-
-                                  loading...
-
-cd to /Users/harisato/.Akachain/devtool-community-network
-current folder /Users/harisato/.Akachain/devtool-community-network
-CLEANING...
-/Users/harisato/.Akachain/devtool-community-network
-Found orphan containers (explorer-db, peer1.org1, peer0.org2, peer1.org2, peer0.org1, peer0.org1-db, peer1.org1-db, orderer0.orderer, ca.org2, admin, peer0.org2-db, ca.org1, peer1.org2-db) for this project. If you removed or renamed this service in your compose file, you can run this command with the --remove-orphans flag to clean it up.
-Removing cryptogen ... 
-[1A[2KRemoving cryptogen ... [32mdone[0m[1BRemoving network testexplorer
-Stopping peer1.org1       ... 
-Stopping peer0.org2       ... 
-Stopping peer1.org2       ... 
-Stopping peer0.org1       ... 
-Stopping peer0.org1-db    ... 
-Stopping peer1.org1-db    ... 
-Stopping orderer0.orderer ... 
-Stopping ca.org2          ... 
-Stopping admin            ... 
-Stopping peer0.org2-db    ... 
-Stopping ca.org1          ... 
-Stopping peer1.org2-db    ... 
-[11A[2KStopping peer0.org2       ... [32mdone[0m[11B[12A[2KStopping peer1.org1       ... [32mdone[0m[12B[10A[2KStopping peer1.org2       ... [32mdone[0m[10B[9A[2KStopping peer0.org1       ... [32mdone[0m[9B[3A[2KStopping peer0.org2-db    ... [32mdone[0m[3B[7A[2KStopping peer1.org1-db    ... [32mdone[0m[7B[1A[2KStopping peer1.org2-db    ... [32mdone[0m[1B[8A[2KStopping peer0.org1-db    ... [32mdone[0m[8B[6A[2KStopping orderer0.orderer ... [32mdone[0m[6B[5A[2KStopping ca.org2          ... [32mdone[0m[5B[2A[2KStopping ca.org1          ... [32mdone[0m[2B[4A[2KStopping admin            ... [32mdone[0m[4BFound orphan containers (explorer-db) for this project. If you removed or renamed this service in your compose file, you can run this command with the --remove-orphans flag to clean it up.
-Removing peer1.org1       ... 
-Removing peer0.org2       ... 
-Removing peer1.org2       ... 
-Removing peer0.org1       ... 
-Removing peer0.org1-db    ... 
-Removing peer1.org1-db    ... 
-Removing orderer0.orderer ... 
-Removing ca.org2          ... 
-Removing admin            ... 
-Removing peer0.org2-db    ... 
-Removing ca.org1          ... 
-Removing peer1.org2-db    ... 
-[4A[2KRemoving admin            ... [32mdone[0m[4B[7A[2KRemoving peer1.org1-db    ... [32mdone[0m[7B[12A[2KRemoving peer1.org1       ... [32mdone[0m[12B[5A[2KRemoving ca.org2          ... [32mdone[0m[5B[8A[2KRemoving peer0.org1-db    ... [32mdone[0m[8B[6A[2KRemoving orderer0.orderer ... [32mdone[0m[6B[2A[2KRemoving ca.org1          ... [32mdone[0m[2B[9A[2KRemoving peer0.org1       ... [32mdone[0m[9B[1A[2KRemoving peer1.org2-db    ... [32mdone[0m[1B[3A[2KRemoving peer0.org2-db    ... [32mdone[0m[3B[11A[2KRemoving peer0.org2       ... [32mdone[0m[11B[10A[2KRemoving peer1.org2       ... [32mdone[0m[10BRemoving network testexplorer
-Network testexplorer not found.
-Found orphan containers (explorer-db) for this project. If you removed or renamed this service in your compose file, you can run this command with the --remove-orphans flag to clean it up.
-Removing configCA.org1 ... 
-Removing configCA.org2 ... 
-[2A[2KRemoving configCA.org1 ... [32mdone[0m[2B[1A[2KRemoving configCA.org2 ... [32mdone[0m[1BRemoving network testexplorer
-Network testexplorer not found.
-
-Remove old docker images chaincode of peer ...
-Untagged: akachain/devtool-frontend:latest
-Untagged: akachain/devtool-frontend@sha256:d1278518722b123995543c463025d8300292822326e031a1c55703b196110521
-Deleted: sha256:4f2d508c6fbc290dbe31fd7b0199138bf758176be13447e390c0ed2a91d956b6
-Deleted: sha256:f1dd6c2517d57fd6b361099a0778b409b88af993a0ae6f701b94ff52c59a1a62
-Untagged: akachain/devtool-admin:latest
-Untagged: akachain/devtool-admin@sha256:2c0c3ad8f992bd12446bd0db42b16b7accdca7c193e722067ec37a54df41aa9b
-Deleted: sha256:caf8d2df11de97391035a72d45be3b011c0fa94c36b44b716d61659b59dd7ecc
-Deleted: sha256:0e400dc815d613b8f1dfcd965158769adb7ccd2f8dc7e6d4a6c3b6711ba2c7d2
-Deleted: sha256:6a1c8999a2fa7146e9b2984da0778a1d1f90cc8a1716d90ee33b301d1af69f9b
-Deleted: sha256:d08f042ee28c78f89fa68146fe3df9f66a6bff06b5c75f537ce9fdcb76c43429
-Deleted: sha256:ab92ec3717a591527def91759a683bc5191e78fad93d3b95c3c5baf27166bc95
-Deleted: sha256:67de1cd0ea6979ed0cdfb533dff4e32c5578b5758f2a13aabbe94027cc474409
-Deleted: sha256:614dc2b55cd1b693c2e44b8506e386b4f07fb375c3948f47ca7898c125c363b2
-Deleted: sha256:1ec0487502b273afff6aedaedbc0f1390dbb45004a4b9a0d830eb0be2e677df4
-Deleted: sha256:20f9d797572b67b18de9a32ea4b3048ff9a1b219cbb5321fd565745dbf9e203c
-Deleted: sha256:09798890afdc89e906b235b5eb538dd1c03e3a86ce799371ce5d2f7fb6a34951
-Deleted: sha256:cfac9ecfbc0042ad5d839aff41adba39d65684c7e15af9f66d237dc03d1fd60b
-Deleted: sha256:f352c02ab6c1704fd1cac057d122c71ab8d059dcbf433068ad7c88c6d7771a43
-Deleted: sha256:b9c3b217e735278337071985f35849d0864facfcc5d01884910980b895e03f77
-Deleted: sha256:fbb641a8b94349e89886f65d79928e4673530e2a2b4d33c2c95e0426713f78e4
-Error response from daemon: conflict: unable to delete 7f374acb551b (cannot be forced) - image is being used by running container b0e139783c4f
-Error response from daemon: conflict: unable to delete f78445e66181 (cannot be forced) - image is being used by running container 767b3793337a
-
-/Users/harisato/.Akachain/devtool-community-network
-GENERATING...
-/Users/harisato/.Akachain/devtool-community-network
-Found orphan containers (explorer-db) for this project. If you removed or renamed this service in your compose file, you can run this command with the --remove-orphans flag to clean it up.
-Creating cryptogen ... 
-[1A[2KCreating cryptogen ... [32mdone[0m[1BAttaching to cryptogen
-[36mcryptogen    |[0m /usr/local/bin/cryptogen
-[36mcryptogen    |[0m ++ '[' -d crypto-config ']'
-[36mcryptogen    |[0m 
-[36mcryptogen    |[0m ##########################################################
-[36mcryptogen    |[0m ##### Generate certificates using cryptogen tool #########
-[36mcryptogen    |[0m ##########################################################
-[36mcryptogen    |[0m ++ cryptogen generate --config=./cryptogen.yaml
-[36mcryptogen    |[0m org1
-[36mcryptogen    |[0m org2
-[36mcryptogen    |[0m ++ set +x
-[36mcryptogen    |[0m /usr/local/bin/configtxgen
-[36mcryptogen    |[0m pwd = /shared/artifacts
-[36mcryptogen    |[0m Removing old channel artifacts...
-[36mcryptogen    |[0m ++ export FABRIC_CFG_PATH=/shared/artifacts
-[36mcryptogen    |[0m ++ FABRIC_CFG_PATH=/shared/artifacts
-[36mcryptogen    |[0m ##########################################################
-[36mcryptogen    |[0m #########  Generating Orderer Genesis block ##############
-[36mcryptogen    |[0m ##########################################################
-[36mcryptogen    |[0m ++ configtxgen -profile AKCOrdererGenesis -outputBlock ./channel-artifacts/genesis.block
-[36mcryptogen    |[0m [33m2019-09-04 02:36:53.210 UTC [common.tools.configtxgen] main -> WARN 001[0m Omitting the channel ID for configtxgen for output operations is deprecated.  Explicitly passing the channel ID will be required in the future, defaulting to 'testchainid'.
-[36mcryptogen    |[0m [34m2019-09-04 02:36:53.210 UTC [common.tools.configtxgen] main -> INFO 002[0m Loading configuration
-[36mcryptogen    |[0m [34m2019-09-04 02:36:53.240 UTC [common.tools.configtxgen.localconfig] completeInitialization -> INFO 003[0m orderer type: solo
-[36mcryptogen    |[0m [34m2019-09-04 02:36:53.240 UTC [common.tools.configtxgen.localconfig] Load -> INFO 004[0m Loaded configuration: /shared/artifacts/configtx.yaml
-[36mcryptogen    |[0m [34m2019-09-04 02:36:53.264 UTC [common.tools.configtxgen.localconfig] completeInitialization -> INFO 005[0m orderer type: solo
-[36mcryptogen    |[0m [34m2019-09-04 02:36:53.264 UTC [common.tools.configtxgen.localconfig] LoadTopLevel -> INFO 006[0m Loaded configuration: /shared/artifacts/configtx.yaml
-[36mcryptogen    |[0m [33m2019-09-04 02:36:53.264 UTC [common.tools.configtxgen.encoder] NewChannelGroup -> WARN 007[0m Default policy emission is deprecated, please include policy specifications for the channel group in configtx.yaml
-[36mcryptogen    |[0m [34m2019-09-04 02:36:53.386 UTC [common.tools.configtxgen] doOutputBlock -> INFO 008[0m Generating genesis block
-[36mcryptogen    |[0m [34m2019-09-04 02:36:53.387 UTC [common.tools.configtxgen] doOutputBlock -> INFO 009[0m Writing genesis block
-[36mcryptogen    |[0m ++ res=0
-[36mcryptogen    |[0m ++ set +x
-[36mcryptogen    |[0m ++ configtxgen -profile testchannel -outputCreateChannelTx ./channel-artifacts/testchannel.tx -channelID testchannel
-[36mcryptogen    |[0m ##########################################################
-[36mcryptogen    |[0m ### Generating channel configuration transaction 'testchannel.tx' ###
-[36mcryptogen    |[0m #################################################################
-[36mcryptogen    |[0m [34m2019-09-04 02:36:53.455 UTC [common.tools.configtxgen] main -> INFO 001[0m Loading configuration
-[36mcryptogen    |[0m [34m2019-09-04 02:36:53.478 UTC [common.tools.configtxgen.localconfig] Load -> INFO 002[0m Loaded configuration: /shared/artifacts/configtx.yaml
-[36mcryptogen    |[0m [34m2019-09-04 02:36:53.518 UTC [common.tools.configtxgen.localconfig] completeInitialization -> INFO 003[0m orderer type: solo
-[36mcryptogen    |[0m [34m2019-09-04 02:36:53.519 UTC [common.tools.configtxgen.localconfig] LoadTopLevel -> INFO 004[0m Loaded configuration: /shared/artifacts/configtx.yaml
-[36mcryptogen    |[0m [34m2019-09-04 02:36:53.520 UTC [common.tools.configtxgen] doOutputChannelCreateTx -> INFO 005[0m Generating new channel configtx
-[36mcryptogen    |[0m [33m2019-09-04 02:36:53.520 UTC [common.tools.configtxgen.encoder] NewChannelGroup -> WARN 006[0m Default policy emission is deprecated, please include policy specifications for the channel group in configtx.yaml
-[36mcryptogen    |[0m [33m2019-09-04 02:36:53.595 UTC [common.tools.configtxgen.encoder] NewChannelGroup -> WARN 007[0m Default policy emission is deprecated, please include policy specifications for the channel group in configtx.yaml
-[36mcryptogen    |[0m [34m2019-09-04 02:36:53.680 UTC [common.tools.configtxgen] doOutputChannelCreateTx -> INFO 008[0m Writing new channel tx
-[36mcryptogen    |[0m 
-[36mcryptogen    |[0m #################################################################
-[36mcryptogen    |[0m #######    Generating anchor peer update   ##########
-[36mcryptogen    |[0m #################################################################
-[36mcryptogen    |[0m ++ res=0
-[36mcryptogen    |[0m ++ set +x
-[36mcryptogen    |[0m +++ expr 2 - 1
-[36mcryptogen    |[0m ++ max=1
-[36mcryptogen    |[0m +++ seq 0 1
-[36mcryptogen    |[0m ++ for i in '`seq 0 $max`'
-[36mcryptogen    |[0m ++ configtxgen -profile testchannel -outputAnchorPeersUpdate ./channel-artifacts/org1anchors.tx -channelID testchannel -asOrg org1MSP
-[36mcryptogen    |[0m [34m2019-09-04 02:36:53.764 UTC [common.tools.configtxgen] main -> INFO 001[0m Loading configuration
-[36mcryptogen    |[0m [34m2019-09-04 02:36:53.792 UTC [common.tools.configtxgen.localconfig] Load -> INFO 002[0m Loaded configuration: /shared/artifacts/configtx.yaml
-[36mcryptogen    |[0m [34m2019-09-04 02:36:53.816 UTC [common.tools.configtxgen.localconfig] completeInitialization -> INFO 003[0m orderer type: solo
-[36mcryptogen    |[0m [34m2019-09-04 02:36:53.816 UTC [common.tools.configtxgen.localconfig] LoadTopLevel -> INFO 004[0m Loaded configuration: /shared/artifacts/configtx.yaml
-[36mcryptogen    |[0m [34m2019-09-04 02:36:53.817 UTC [common.tools.configtxgen] doOutputAnchorPeersUpdate -> INFO 005[0m Generating anchor peer update
-[36mcryptogen    |[0m [34m2019-09-04 02:36:53.818 UTC [common.tools.configtxgen] doOutputAnchorPeersUpdate -> INFO 006[0m Writing anchor peer update
-[36mcryptogen    |[0m ++ res=0
-[36mcryptogen    |[0m ++ set +x
-[36mcryptogen    |[0m [34m2019-09-04 02:36:53.878 UTC [common.tools.configtxgen] main -> INFO 001[0m Loading configuration
-[36mcryptogen    |[0m [34m2019-09-04 02:36:53.900 UTC [common.tools.configtxgen.localconfig] Load -> INFO 002[0m Loaded configuration: /shared/artifacts/configtx.yaml
-[36mcryptogen    |[0m [34m2019-09-04 02:36:53.927 UTC [common.tools.configtxgen.localconfig] completeInitialization -> INFO 003[0m orderer type: solo
-[36mcryptogen    |[0m [34m2019-09-04 02:36:53.927 UTC [common.tools.configtxgen.localconfig] LoadTopLevel -> INFO 004[0m Loaded configuration: /shared/artifacts/configtx.yaml
-[36mcryptogen    |[0m [34m2019-09-04 02:36:53.928 UTC [common.tools.configtxgen] doOutputAnchorPeersUpdate -> INFO 005[0m Generating anchor peer update
-[36mcryptogen    |[0m [34m2019-09-04 02:36:53.929 UTC [common.tools.configtxgen] doOutputAnchorPeersUpdate -> INFO 006[0m Writing anchor peer update
-[36mcryptogen    |[0m ++ sed -i s/CURRENT_USER//g network-config.yaml
-[36mcryptogen    |[0m ++ set +x
-[36mcryptogen    |[0m +++ expr 0 + 1
-[36mcryptogen    |[0m ++ current_idx=1
-[36mcryptogen    |[0m ++ cd crypto-config/peerOrganizations/org1/users/Admin@org1/msp/keystore/
-[36mcryptogen    |[0m +++ ls 399f23efc30be9c530f3b1798c31ef10ce22e3c745b045ce975613238faf753e_sk
-[36mcryptogen    |[0m ++ PRIV_KEY=399f23efc30be9c530f3b1798c31ef10ce22e3c745b045ce975613238faf753e_sk
-[36mcryptogen    |[0m ++ cd /shared/artifacts
-[36mcryptogen    |[0m ++ sed -i s/ADMIN_ORG1_PRIVATE_KEY/399f23efc30be9c530f3b1798c31ef10ce22e3c745b045ce975613238faf753e_sk/g network-config.yaml
-[36mcryptogen    |[0m ++ sed -i s/ORG1NAME/org1/g network-config.yaml
-[36mcryptogen    |[0m ++ sed -i s/ORG1MSP/org1MSP/g network-config.yaml
-[36mcryptogen    |[0m ++ sed -i s/ORG1DOMAIN/org1/g network-config.yaml
-[36mcryptogen    |[0m ++ sed -i s/REQUESTCHANNEL/testchannel/g network-config.yaml
-[36mcryptogen    |[0m ++ set +x
-[36mcryptogen    |[0m +++ expr 1 + 1
-[36mcryptogen    |[0m ++ current_idx=2
-[36mcryptogen    |[0m ++ cd crypto-config/peerOrganizations/org2/users/Admin@org2/msp/keystore/
-[36mcryptogen    |[0m +++ ls f5a7ef67172aaf706832c970951288cbd02eff408abff7b34eeab171a05b8138_sk
-[36mcryptogen    |[0m ++ PRIV_KEY=f5a7ef67172aaf706832c970951288cbd02eff408abff7b34eeab171a05b8138_sk
-[36mcryptogen    |[0m ++ cd /shared/artifacts
-[36mcryptogen    |[0m ++ sed -i s/ADMIN_ORG2_PRIVATE_KEY/f5a7ef67172aaf706832c970951288cbd02eff408abff7b34eeab171a05b8138_sk/g network-config.yaml
-[36mcryptogen    |[0m ++ sed -i s/ORG2NAME/org2/g network-config.yaml
-[36mcryptogen    |[0m ++ sed -i s/ORG2MSP/org2MSP/g network-config.yaml
-[36mcryptogen    |[0m ++ sed -i s/ORG2DOMAIN/org2/g network-config.yaml
-[36mcryptogen    |[0m ++ sed -i s/REQUESTCHANNEL/testchannel/g network-config.yaml
-[36mcryptogen    |[0m ++ set +x
-[36mcryptogen    |[0m /shared
-[36mcryptogen    |[0m /shared
-[36mcryptogen exited with code 0
-[0mFound orphan containers (explorer-db) for this project. If you removed or renamed this service in your compose file, you can run this command with the --remove-orphans flag to clean it up.
-Pulling admin (akachain/devtool-admin:latest)...
-latest: Pulling from akachain/devtool-admin
-Digest: sha256:2c0c3ad8f992bd12446bd0db42b16b7accdca7c193e722067ec37a54df41aa9b
-Status: Downloaded newer image for akachain/devtool-admin:latest
-Creating ca.org1 ... 
-Creating admin   ... 
-Creating peer1.org1-db ... 
-Creating orderer0.orderer ... 
-Creating peer0.org1-db    ... 
-Creating peer1.org2-db    ... 
-Creating peer0.org2-db    ... 
-Creating ca.org2          ... 
-[1A[2KCreating ca.org2          ... [32mdone[0m[1B[7A[2KCreating admin            ... [32mdone[0m[7B[6A[2KCreating peer1.org1-db    ... [32mdone[0m[6B[3A[2KCreating peer1.org2-db    ... [32mdone[0m[3B[5A[2KCreating orderer0.orderer ... [32mdone[0m[5BCreating peer1.org2       ... 
-Creating peer1.org1       ... 
-[6A[2KCreating peer0.org1-db    ... [32mdone[0m[6BCreating peer0.org1       ... 
-[11A[2KCreating ca.org1          ... [32mdone[0m[11B[5A[2KCreating peer0.org2-db    ... [32mdone[0m[5BCreating peer0.org2       ... 
-[4A[2KCreating peer1.org2       ... [32mdone[0m[4B[3A[2KCreating peer1.org1       ... [32mdone[0m[3B[2A[2KCreating peer0.org1       ... [32mdone[0m[2B[1A[2KCreating peer0.org2       ... [32mdone[0m[1Bsleep 10s
-Found orphan containers (peer0.org2, peer0.org1, peer1.org1, peer1.org2, peer0.org1-db, peer1.org2-db, ca.org1, ca.org2, peer0.org2-db, orderer0.orderer, admin, peer1.org1-db, explorer-db) for this project. If you removed or renamed this service in your compose file, you can run this command with the --remove-orphans flag to clean it up.
-Creating configCA.org1 ... 
-Creating configCA.org2 ... 
-[1A[2KCreating configCA.org2 ... [32mdone[0m[1B[2A[2KCreating configCA.org1 ... [32mdone[0m[2B[36m[2019-09-04T09:39:45.011] [DEBUG] network - [39mregister org 1 succeeded:  { success: true, message: 'org1 enrolled Successfully\'' }
-[36m[2019-09-04T09:39:45.605] [DEBUG] network - [39mregister org 2 succeeded:  { success: true, message: 'org2 enrolled Successfully\'' }
-[36m[2019-09-04T09:39:45.995] [DEBUG] network - [39mcreate channel succeeded:  { success: true,
-  message: 'Channel testchannel created Successfully' }
-[36m[2019-09-04T09:39:49.407] [DEBUG] network - [39mjoin channel org 1 succeeded:  { message:
-   'Successfully joined peers in organization org1 to the channel: testchannel',
-  success: true }
-[36m[2019-09-04T09:39:52.885] [DEBUG] network - [39mjoin channel org 2 succeeded:  { message:
-   'Successfully joined peers in organization org2 to the channel: testchannel',
-  success: true }
-[36m[2019-09-04T09:39:52.886] [DEBUG] network - [39mcreateNWResult:  { message:
-   'Successfully joined peers in organization org2 to the channel: testchannel',
-  success: true }
-[32m[2019-09-04T09:39:52.952] [INFO] network - [39mcreate network successfully
-[32m[2019-09-04T09:42:22.406] [INFO] network - [39mget all nw ok
-[36m[2019-09-04T09:42:47.155] [DEBUG] dev-chaincode-service - [39mchaincodeId: 7211320742266047, chaincodePath: /Users/harisato/.Akachain/devtool-backend/chaincode/fabcar-1567564967152.zip, chaincodeVersion: 1.00
-[36m[2019-09-04T09:42:47.191] [DEBUG] dev-chaincode-service - [39mchaincode size: 2461 /  1000000.0 = 0.002461MB
-[36m[2019-09-04T09:42:47.192] [DEBUG] dev-chaincode-service - [39mfullPath: /Users/harisato/.Akachain/devtool-backend/chaincode/fabcar-1567564967152.zip
-[36m[2019-09-04T09:42:47.193] [DEBUG] dev-chaincode-service - [39mchaincodeId: 7211320742266047, chaincodePath: /Users/harisato/.Akachain/devtool-backend/chaincode/fabcar-1567564967152.zip, chaincodeVersion: 1.00
-/bin/sh: /Users/harisato/.Akachain/devtool-backend/scripts/download-chaincode.sh: Permission denied
-[36m[2019-09-04T09:42:47.308] [DEBUG] dev-chaincode-service - [39m""
-[36m[2019-09-04T09:42:47.308] [DEBUG] dev-chaincode-service - [39m- cp & unzip chaincode success
-[91m[2019-09-04T09:42:47.318] [ERROR] Upload - [39mTypeError: Cannot read property 'length' of undefined
-    at requestInstall (/Users/harisato/.Akachain/devtool-backend/services/install-chaincode-service.js:132:31)
-    at Object.install (/Users/harisato/.Akachain/devtool-backend/services/install-chaincode-service.js:29:24)
-    at process._tickCallback (internal/process/next_tick.js:68:7)
-[36m[2019-09-04T09:43:45.466] [DEBUG] dev-chaincode-service - [39mchaincodeId: 1925610310312602, chaincodePath: /Users/harisato/.Akachain/devtool-backend/chaincode/fabcar-node-1567565025451.zip, chaincodeVersion: 1.00
-[36m[2019-09-04T09:43:45.467] [DEBUG] dev-chaincode-service - [39mchaincode size: 2340 /  1000000.0 = 0.00234MB
-[36m[2019-09-04T09:43:45.467] [DEBUG] dev-chaincode-service - [39mfullPath: /Users/harisato/.Akachain/devtool-backend/chaincode/fabcar-node-1567565025451.zip
-[36m[2019-09-04T09:43:45.468] [DEBUG] dev-chaincode-service - [39mchaincodeId: 1925610310312602, chaincodePath: /Users/harisato/.Akachain/devtool-backend/chaincode/fabcar-node-1567565025451.zip, chaincodeVersion: 1.00
-CHAINCODE_ID: 1925610310312602
-CHAINCODE_VER: 1.00
-CC_PATH: /Users/harisato/.Akachain/devtool-backend/chaincode/fabcar-node-1567565025451.zip
-CHAINCODE_FOLDER: /Users/harisato/.Akachain/devtool-community-network/chaincodes/1925610310312602/1.00
-ZIP_CC: fabcar-node-1567565025451.zip
-Archive:  fabcar-node-1567565025451.zip
-  inflating: index.js                
-   creating: lib/
-  inflating: lib/fabcar.js           
-  inflating: package.json            
-[36m[2019-09-04T09:43:45.926] [DEBUG] dev-chaincode-service - [39m"CHAINCODE_ID: 1925610310312602\nCHAINCODE_VER: 1.00\nCC_PATH: /Users/harisato/.Akachain/devtool-backend/chaincode/fabcar-node-1567565025451.zip\nCHAINCODE_FOLDER: /Users/harisato/.Akachain/devtool-community-network/chaincodes/1925610310312602/1.00\nZIP_CC: fabcar-node-1567565025451.zip\nArchive:  fabcar-node-1567565025451.zip\n  inflating: index.js                \n   creating: lib/\n  inflating: lib/fabcar.js           \n  inflating: package.json            \n"
-[36m[2019-09-04T09:43:45.926] [DEBUG] dev-chaincode-service - [39m- cp & unzip chaincode success
-[91m[2019-09-04T09:43:45.927] [ERROR] Upload - [39mTypeError: Cannot read property 'length' of undefined
-    at requestInstall (/Users/harisato/.Akachain/devtool-backend/services/install-chaincode-service.js:132:31)
-    at Object.install (/Users/harisato/.Akachain/devtool-backend/services/install-chaincode-service.js:29:24)
-    at process._tickCallback (internal/process/next_tick.js:68:7)
-[36m[2019-09-04T09:44:01.390] [DEBUG] dev-chaincode-service - [39mchaincodeId: 7648468641340476, chaincodePath: /Users/harisato/.Akachain/devtool-backend/chaincode/fabcar-node-1567565041386.zip, chaincodeVersion: 1.00
-[36m[2019-09-04T09:44:01.391] [DEBUG] dev-chaincode-service - [39mchaincode size: 2340 /  1000000.0 = 0.00234MB
-[36m[2019-09-04T09:44:01.393] [DEBUG] dev-chaincode-service - [39mfullPath: /Users/harisato/.Akachain/devtool-backend/chaincode/fabcar-node-1567565041386.zip
-[36m[2019-09-04T09:44:01.394] [DEBUG] dev-chaincode-service - [39mchaincodeId: 7648468641340476, chaincodePath: /Users/harisato/.Akachain/devtool-backend/chaincode/fabcar-node-1567565041386.zip, chaincodeVersion: 1.00
-CHAINCODE_ID: 7648468641340476
-CHAINCODE_VER: 1.00
-CC_PATH: /Users/harisato/.Akachain/devtool-backend/chaincode/fabcar-node-1567565041386.zip
-CHAINCODE_FOLDER: /Users/harisato/.Akachain/devtool-community-network/chaincodes/7648468641340476/1.00
-ZIP_CC: fabcar-node-1567565041386.zip
-Archive:  fabcar-node-1567565041386.zip
-  inflating: index.js                
-   creating: lib/
-  inflating: lib/fabcar.js           
-  inflating: package.json            
-[36m[2019-09-04T09:44:01.703] [DEBUG] dev-chaincode-service - [39m"CHAINCODE_ID: 7648468641340476\nCHAINCODE_VER: 1.00\nCC_PATH: /Users/harisato/.Akachain/devtool-backend/chaincode/fabcar-node-1567565041386.zip\nCHAINCODE_FOLDER: /Users/harisato/.Akachain/devtool-community-network/chaincodes/7648468641340476/1.00\nZIP_CC: fabcar-node-1567565041386.zip\nArchive:  fabcar-node-1567565041386.zip\n  inflating: index.js                \n   creating: lib/\n  inflating: lib/fabcar.js           \n  inflating: package.json            \n"
-[36m[2019-09-04T09:44:01.703] [DEBUG] dev-chaincode-service - [39m- cp & unzip chaincode success
-[91m[2019-09-04T09:44:01.703] [ERROR] Upload - [39mTypeError: Cannot read property 'length' of undefined
-    at requestInstall (/Users/harisato/.Akachain/devtool-backend/services/install-chaincode-service.js:132:31)
-    at Object.install (/Users/harisato/.Akachain/devtool-backend/services/install-chaincode-service.js:29:24)
-    at process._tickCallback (internal/process/next_tick.js:68:7)
-[36m[2019-09-04T09:44:27.323] [DEBUG] dev-chaincode-service - [39mchaincodeId: 3562478782098530, chaincodePath: /Users/harisato/.Akachain/devtool-backend/chaincode/fabcar-1567565067319.zip, chaincodeVersion: 1.00
-[36m[2019-09-04T09:44:27.324] [DEBUG] dev-chaincode-service - [39mchaincode size: 2461 /  1000000.0 = 0.002461MB
-[36m[2019-09-04T09:44:27.324] [DEBUG] dev-chaincode-service - [39mfullPath: /Users/harisato/.Akachain/devtool-backend/chaincode/fabcar-1567565067319.zip
-[36m[2019-09-04T09:44:27.340] [DEBUG] dev-chaincode-service - [39mchaincodeId: 3562478782098530, chaincodePath: /Users/harisato/.Akachain/devtool-backend/chaincode/fabcar-1567565067319.zip, chaincodeVersion: 1.00
-CHAINCODE_ID: 3562478782098530
-CHAINCODE_VER: 1.00
-CC_PATH: /Users/harisato/.Akachain/devtool-backend/chaincode/fabcar-1567565067319.zip
-CHAINCODE_FOLDER: /Users/harisato/.Akachain/devtool-community-network/chaincodes/3562478782098530/1.00
-ZIP_CC: fabcar-1567565067319.zip
-Archive:  fabcar-1567565067319.zip
-  inflating: fabcar.go               
-[36m[2019-09-04T09:44:27.545] [DEBUG] dev-chaincode-service - [39m"CHAINCODE_ID: 3562478782098530\nCHAINCODE_VER: 1.00\nCC_PATH: /Users/harisato/.Akachain/devtool-backend/chaincode/fabcar-1567565067319.zip\nCHAINCODE_FOLDER: /Users/harisato/.Akachain/devtool-community-network/chaincodes/3562478782098530/1.00\nZIP_CC: fabcar-1567565067319.zip\nArchive:  fabcar-1567565067319.zip\n  inflating: fabcar.go               \n"
-[36m[2019-09-04T09:44:27.545] [DEBUG] dev-chaincode-service - [39m- cp & unzip chaincode success
-[91m[2019-09-04T09:44:27.545] [ERROR] Upload - [39mTypeError: Cannot read property 'length' of undefined
-    at requestInstall (/Users/harisato/.Akachain/devtool-backend/services/install-chaincode-service.js:132:31)
-    at Object.install (/Users/harisato/.Akachain/devtool-backend/services/install-chaincode-service.js:29:24)
-    at process._tickCallback (internal/process/next_tick.js:68:7)
