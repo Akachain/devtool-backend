@@ -158,7 +158,7 @@ const create = async (req, res) => {
         res.io.sockets.emit('log_sh', `create network error: ${error}`);
       } else {
         logger.info('create network successfully');
-        res.io.sockets.emit('log_sh', `create network successfully: ${error}`);
+        res.io.sockets.emit('log_sh', 'create network successfully');
       }
     });
     res.io.sockets.emit('create_nw', 'succeeded');
