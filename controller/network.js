@@ -59,9 +59,11 @@ const create = async (req, res) => {
             { headers }
           ).then(res => {
             logger.debug('register org 1 succeeded: ', res.data);
+            res.io.sockets.emit('log_sh', `register org 1 succeeded: ${res.data}`);
             return res;
           }).catch(err => {
             logger.error('register org 1 failed: ', err);
+            res.io.sockets.emit('log_sh', `register org 1 failed: ${err}`);
           });
           // console.log('========== ', regOrg1Result);
           if (regOrg1Result.data.success) {
@@ -71,9 +73,12 @@ const create = async (req, res) => {
               { headers }
             ).then(res => {
               logger.debug('register org 2 succeeded: ', res.data);
+              res.io.sockets.emit('log_sh', `register org 2 succeeded: ${res.data}`);
               return res;
             }).catch(err => {
               logger.error('register org 2 failed: ', err);
+              res.io.sockets.emit('log_sh', `register org 2 failed: ${err}`);
+
             });
             if (regOrg2Result.data.success) {
               // create channel
@@ -82,9 +87,11 @@ const create = async (req, res) => {
                 { headers }
               ).then(res => {
                 logger.debug('create channel succeeded: ', res.data);
+                res.io.sockets.emit('log_sh', `create channel succeeded:  ${res.data}`);
                 return res;
               }).catch(err => {
                 logger.error('create channel failed: ', err);
+                res.io.sockets.emit('log_sh', `create channel failed:  ${err}`);
               });
               if (createChannelResult.data.success) {
                 // join channel org 1
@@ -93,9 +100,11 @@ const create = async (req, res) => {
                   { headers }
                 ).then(res => {
                   logger.debug('join channel org 1 succeeded: ', res.data);
+                  res.io.sockets.emit('log_sh', `join channel org 1 succeeded:  ${res.data}`);
                   return res;
                 }).catch(err => {
                   logger.error('join channel org 1 failed: ', err);
+                  res.io.sockets.emit('log_sh', `join channel org 1 failed:  ${err}`);
                 });
                 if (joinChannelOrg1Res.data.success) {
                   // join channel org 2
@@ -104,9 +113,11 @@ const create = async (req, res) => {
                     { headers }
                   ).then(res => {
                     logger.debug('join channel org 2 succeeded: ', res.data);
+                    res.io.sockets.emit('log_sh', `join channel org 2 succeeded:  ${res.data}`);
                     return res;
                   }).catch(err => {
                     logger.error('join channel org 2 failed: ', err);
+                    res.io.sockets.emit('log_sh', `join channel org 2 failed:  ${err}`);
                   });
                   resolve(joinChannelOrg2Res);
                 } else {
@@ -124,6 +135,7 @@ const create = async (req, res) => {
 
         } else {
           logger.debug(`err ${result.code}, stderr ${result.stderr}, stdout ${result.stdout} `);
+          res.io.sockets.emit('log_sh', `err ${result.code}, stderr ${result.stderr}, stdout ${result.stdout} `);
           resolve({
             data: {
               message: 'create nw failed' + JSON.stringify(error),
@@ -138,6 +150,7 @@ const create = async (req, res) => {
     }
   }).catch(error => {
     logger.error('create nw failed: ', error);
+    res.io.sockets.emit('log_sh', `create nw failed: ${error} `);
     resolve({
       data: {
         message: 'create nw failed' + JSON.stringify(error),
@@ -146,15 +159,18 @@ const create = async (req, res) => {
     });
   });
   logger.debug('createNWResult: ', createNWResult.data);
-
+  res.io.sockets.emit('log_sh', `createNWResult: ${createNWResult.data} `);
   // sh file ok
   if (createNWResult.data.success) {
 
     network.create(req.body, (error, rows) => {
       if (error) {
         logger.error('create network error: ', error);
+        res.io.sockets.emit('log_sh', `create network error: ${error} `);
+
       } else {
         logger.info('create network successfully');
+        res.io.sockets.emit('log_sh', `create network successfully`);
       }
     });
     res.io.sockets.emit('create_nw', 'succeeded');
