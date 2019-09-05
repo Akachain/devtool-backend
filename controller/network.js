@@ -47,7 +47,7 @@ const create = async (req, res) => {
         res.io.sockets.emit('log_sh', data);
       });
 
-      result.on('close', function (code) {
+      result.on('close', async function (code) {
         console.log('close:', code);
         if (code === 0) {
           const headers = {
