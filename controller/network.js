@@ -147,7 +147,7 @@ const create = async (req, res) => {
     });
   });
   logger.debug('createNWResult: ', createNWResult.data);
-  res.io.sockets.emit('log_sh', `createNWResult: ${createNWResult.data}`);
+  // res.io.sockets.emit('log_sh', `createNWResult: ${createNWResult.data}`);
 
   // sh file ok
   if (createNWResult.data.success) {
