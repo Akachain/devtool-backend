@@ -87,14 +87,13 @@ router.post('/', (req, res, next) => {
                 const result = await installChaincodeSvc.install(installData);
                 logger.debug('result', result);
                 if (result.success) {
-
                   const upgradeData = {
                     orgname: req.body.orgName[0],
                     channelName: req.body.channelName,
                     chaincodeId: req.body.chaincodeId + '',
                     chaincodeVersion: chaincodeVersion + '',
                     chaincodeType: req.body.language,
-                    args: req.body.args
+                    args: req.body.args? JSON.parse(req.body.args): req.body.args
                   };
                   axios.post(`${DAPP_URL}upgradeChainCode`, upgradeData).then(upgradeResult => {
                     console.log('upgrade chaincode response: ', upgradeResult.data);
