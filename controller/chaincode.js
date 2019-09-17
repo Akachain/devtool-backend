@@ -15,7 +15,7 @@ const init = async (req, res) => {
   const data = {
     chaincodeId: req.body.chaincodeId,
     chaincodeVersion: req.body.chaincodeVersion,
-    orgname: req.body.orgName,
+    orgname: req.body.orgName.toLowerCase(), //accept lowercase only
     channelName: req.body.channelName,
     chaincodeType: req.body.language,
     args: req.body.args
@@ -62,8 +62,8 @@ const invoke = async (req, res) => {
   logger.info('================= INVOKE CHAINCODE =================');
 
   const data = {
-    username: req.body.orgName,
-    orgname: req.body.orgName,
+    username: req.body.orgName.toLowerCase(), //accept lowercase only,,
+    orgname: req.body.orgName.toLowerCase(), //accept lowercase only,
     channelName: req.body.channelName,
     chaincodeId: req.body.chaincodeId,
     chaincodeVersion: req.body.chaincodeVersion,
@@ -89,8 +89,8 @@ const query = async (req, res) => {
 
   logger.info('================= QUERY CHAINCODE =================');
   const data = {
-    username: req.body.orgName,
-    orgname: req.body.orgName,
+    username: req.body.orgName.toLowerCase(), //accept lowercase only
+    orgname: req.body.orgName.toLowerCase(), //accept lowercase only,
     channelName: req.body.channelName,
     chaincodeId: req.body.chaincodeId,
     fcn: req.body.fcn,

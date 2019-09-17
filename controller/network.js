@@ -13,8 +13,10 @@ const axios = require('axios');
  */
 const create = async (req, res) => {
 
+  const org1Name = req.body.org1Name.toLowerCase(); //currently support lowercase
+  const org2Name = req.body.org2Name.toLowerCase(); //currently support lowercase
   const {
-    name, org1Name, org2Name, channelName, version
+    name, channelName, version
   } = req.body;
   // emit socket msg and return success response
 

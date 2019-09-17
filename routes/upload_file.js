@@ -78,7 +78,7 @@ router.post('/', (req, res, next) => {
                 chaincodePath: `${req.files[0].destination}/${req.files[0].filename}`,
                 chaincodeVersion: chaincodeVersion + '',
                 language: req.body.language,
-                orgName: req.body.orgName,
+                orgName: req.body.orgName.map(org => org.toLowerCase()), //accept lowercase only,,
                 channelName: req.body.channelName
               };
 
@@ -88,7 +88,7 @@ router.post('/', (req, res, next) => {
                 logger.debug('result', result);
                 if (result.success) {
                   const upgradeData = {
-                    orgname: req.body.orgName[0],
+                    orgname: req.body.orgName[0].toLowerCase(), //accept lowercase only,
                     channelName: req.body.channelName,
                     chaincodeId: req.body.chaincodeId + '',
                     chaincodeVersion: chaincodeVersion + '',
@@ -151,7 +151,7 @@ router.post('/', (req, res, next) => {
             chaincodePath: `${req.files[0].destination}/${req.files[0].filename}`,
             chaincodeVersion: '1.00',
             language: req.body.language,
-            orgName: req.body.orgName,
+            orgName: req.body.orgName.map(org => org.toLowerCase()), //accept lowercase only,,
             channelName: req.body.channelName
           };
 
