@@ -70,37 +70,64 @@ router.post('/', (req, res, next) => {
             } else {
               logger.info('*********    update data to db offchain successfully!    *********');
 
-
-              // try {
               res.io.sockets.emit('upg_cc', 'upgrading');
               res.json(response.successResponse('E008'));
 
-
-              const upgradeData = {
-                orgname: req.body.orgName,
-                channelName: req.body.channelName,
+              const installData = {
                 chaincodeId: req.body.chaincodeId + '',
+                chaincodePath: `${req.files[0].destination}/${req.files[0].filename}`,
                 chaincodeVersion: chaincodeVersion + '',
-                chaincodeType: req.body.language,
-                args: req.body.args
+                language: req.body.language,
+                orgName: req.body.orgName.map(org => org.toLowerCase()), //accept lowercase only,,
+                channelName: req.body.channelName
               };
-              axios.post(`${DAPP_URL}upgradeChainCode`, upgradeData).then(upgradeResult => {
-                if (upgradeResult.success) {
-                  res.io.sockets.emit('upg_cc', 'upgrade_succeeded');
 
-                  // parallel thread running to update chaincode status when success
-                  const updateData = {
-                    id: req.body.chaincodeId + '',
-                    upgradeStatus: 'success'
+              try {
+
+                const result = await installChaincodeSvc.install(installData);
+                logger.debug('result', result);
+                if (result.success) {
+                  const upgradeData = {
+                    orgname: req.body.orgName[0].toLowerCase(), //accept lowercase only,
+                    channelName: req.body.channelName,
+                    chaincodeId: req.body.chaincodeId + '',
+                    chaincodeVersion: chaincodeVersion + '',
+                    chaincodeType: req.body.language,
+                    args: req.body.args? JSON.parse(req.body.args): req.body.args
                   };
-                  chaincode.updateUpgradeStatus(updateData, (errInit, upgStatus) => {
-                    if (errInit) {
-                      logger.error('upgrade cc status failed', errInit);
-                    }
-                  });
+                  axios.post(`${DAPP_URL}upgradeChainCode`, upgradeData).then(upgradeResult => {
+                    console.log('upgrade chaincode response: ', upgradeResult.data);
+                    if (upgradeResult.data.success) {
+                      res.io.sockets.emit('upg_cc', 'upgrade_succeeded');
 
+                      // parallel thread running to update chaincode status when success
+                      const updateData = {
+                        id: req.body.chaincodeId + '',
+                        upgradeStatus: 'success'
+                      };
+                      chaincode.updateUpgradeStatus(updateData, (errInit, upgStatus) => {
+                        if (errInit) {
+                          logger.error('upgrade cc status failed', errInit);
+                        }
+                      });
+
+                    }
+                  }).catch(err => {
+                    logger.error('upgrade chaincode dapp error: ', err.response.data);
+                    res.io.sockets.emit('upg_cc', 'upgrade_failed');
+
+                    const data = {
+                      id: req.body.chaincodeId + '',
+                      upgradeStatus: 'fail'
+                    };
+                    chaincode.updateUpgradeStatus(data, function (errInit, upgStatus) {
+                      if (errInit) {
+                        logger.error('upgrade cc status failed', errInit);
+                      }
+                    });
+                  });
                 }
-              }).catch(err => {
+              } catch (err) {
                 logger.error('upgrade chaincode dapp error: ', err);
                 res.io.sockets.emit('upg_cc', 'upgrade_failed');
 
@@ -113,7 +140,7 @@ router.post('/', (req, res, next) => {
                     logger.error('upgrade cc status failed', errInit);
                   }
                 });
-              });
+              }
             }
           });
 
@@ -124,7 +151,7 @@ router.post('/', (req, res, next) => {
             chaincodePath: `${req.files[0].destination}/${req.files[0].filename}`,
             chaincodeVersion: '1.00',
             language: req.body.language,
-            orgName: req.body.orgName,
+            orgName: req.body.orgName.map(org => org.toLowerCase()), //accept lowercase only,,
             channelName: req.body.channelName
           };
 

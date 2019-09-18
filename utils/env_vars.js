@@ -1,1 +1,1 @@
-global.DAPP_URL = 'http://localhost:4001/';
+global.DAPP_URL = 'http://localhost:44081/';

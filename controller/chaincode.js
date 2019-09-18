@@ -9,20 +9,23 @@ const init = async (req, res) => {
   logger.info('*****************    INIT CHAINCODE    *****************');
   logger.debug('init data req.body: ', req.body);
 
+  res.io.sockets.emit('init_cc', 'initializing');
+  res.json(response.successResponse('E007'));
+
   const data = {
     chaincodeId: req.body.chaincodeId,
     chaincodeVersion: req.body.chaincodeVersion,
-    orgname: req.body.orgName,
+    orgname: req.body.orgName.toLowerCase(), //accept lowercase only
     channelName: req.body.channelName,
     chaincodeType: req.body.language,
     args: req.body.args
   };
 
   axios.post(`${DAPP_URL}initchaincodes`, data).then(response => {
-    logger.debug('init cc result', response);
-    res.json(response);
+    logger.debug('init cc result', response.data);
+    // res.json(response);
 
-    if (response.success) {
+    if (response.data.success) {
       const updateData = {
         id: req.body.chaincodeId,
         initStatus: 'success',
@@ -31,13 +34,14 @@ const init = async (req, res) => {
       chaincode.updateInitStatus(updateData, function (errInit, initStatus) {
         if (errInit) {
           logger.error('update init status failed', errInit);
-          return res.json(response.errorResponse('E002'));
+          res.io.sockets.emit('init_cc', 'init_failed');
         }
+        res.io.sockets.emit('init_cc', 'init_succeeded');
       });
     }
   }).catch(error => {
-    logger.error('Fail to init chaincode ', error);
-    res.json(error.toString());
+    logger.error('Fail to init chaincode ', error.response.data);
+    res.io.sockets.emit('init_cc', 'init_failed');
 
     const updateData = {
       id: req.body.chaincodeId,
@@ -58,8 +62,8 @@ const invoke = async (req, res) => {
   logger.info('================= INVOKE CHAINCODE =================');
 
   const data = {
-    username: req.body.orgName,
-    orgname: req.body.orgName,
+    username: req.body.orgName.toLowerCase(), //accept lowercase only,,
+    orgname: req.body.orgName.toLowerCase(), //accept lowercase only,
     channelName: req.body.channelName,
     chaincodeId: req.body.chaincodeId,
     chaincodeVersion: req.body.chaincodeVersion,
@@ -69,8 +73,8 @@ const invoke = async (req, res) => {
   };
 
   axios.post(`${DAPP_URL}invokeChainCode`, data).then(response => {
-    logger.debug('invoke cc result', response);
-    res.json(response);
+    logger.debug('invoke cc result', response.data);
+    res.json(response.data);
   }).catch(error => {
     logger.error('Fail to invoke chaincode ', error);
     res.json({
@@ -85,8 +89,8 @@ const query = async (req, res) => {
 
   logger.info('================= QUERY CHAINCODE =================');
   const data = {
-    username: req.body.orgName,
-    orgname: req.body.orgName,
+    username: req.body.orgName.toLowerCase(), //accept lowercase only
+    orgname: req.body.orgName.toLowerCase(), //accept lowercase only,
     channelName: req.body.channelName,
     chaincodeId: req.body.chaincodeId,
     fcn: req.body.fcn,
@@ -94,8 +98,8 @@ const query = async (req, res) => {
   };
 
   axios.post(`${DAPP_URL}queryChainCode`, data).then(response => {
-    logger.debug('query cc result', response);
-    res.json(response);
+    logger.debug('query cc result', response.data);
+    res.json(response.data);
   }).catch(error => {
     logger.error('Fail to query chaincode ', error);
     res.json({

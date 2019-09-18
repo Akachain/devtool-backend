@@ -8,7 +8,7 @@ const cors = require('cors');
 require('./config.js');
 const socketIO = require('socket.io');
 /********** Initialize app ************/
-const server = app.listen(3000, '0.0.0.0', () => {
+const server = app.listen(44080, '0.0.0.0', () => {
   console.info(`Connecting to database [${connection.config.connectionConfig.database}] at ${connection.config.connectionConfig.host}:${connection.config.connectionConfig.port}...`);
   console.info(`Server is listening on ${server.address().address}:${server.address().port} ...`);
 });

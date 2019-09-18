@@ -3,7 +3,7 @@ const path = require('path');
 const fs = require('fs');
 
 const connection = mysql.createPool({
-  host: '0.0.0.0',
+  host: '127.0.0.1',
   port: '4406',
   user: 'root',
   password: 'Akachain',
@@ -17,7 +17,7 @@ connection.query(sql, function (err, results) {
 });
 
 const realConfig = mysql.createPool({
-  host: '0.0.0.0',
+  host: '127.0.0.1',
   port: '4406',
   user: 'root',
   password: 'Akachain',
