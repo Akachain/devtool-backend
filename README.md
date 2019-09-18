@@ -1,5 +1,5 @@
 # Akachain development tool backend
-This is backend for Akachain development tool. Detail description can be found here [devool](https://github.com/Akachain/devtool)
+This is backend for Akachain development tool. Detail description can be found here [devtool](https://github.com/Akachain/devtool)
 
 # Setup & Run Service
 1. Install package: `npm install`
