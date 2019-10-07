@@ -127,13 +127,20 @@ const requestInstall = async (req) => {
   logger.debug(JSON.stringify(result));
   logger.debug('- cp & unzip chaincode success');
 
+  // chaincode path
+  let ccPath;
+  if (language === 'node') {
+    ccPath = `/data/app/artifacts/src/chaincodes/${chaincodeId}/${chaincodeVersion}/`;
+  } else {
+    ccPath = `chaincodes/${chaincodeId}/${chaincodeVersion}/`;
+  }
   // INSTALL
   let installResult = false;
   for (let i = 0; i < orgName.length; i++) {
     const data = {
       orgname: orgName[i],
       chaincodeId,
-      chaincodePath: `chaincodes/${chaincodeId}/${chaincodeVersion}/`,
+      chaincodePath: ccPath,
       chaincodeVersion,
       chaincodeType: language
     };
